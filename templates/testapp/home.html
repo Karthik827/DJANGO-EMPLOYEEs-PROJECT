@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/employee.css' %}">
+    <title>Employee Table</title>
+</head>
+<body>
+<div class="container">
+    <table border="4">
+        <thead>
+            <th>EMP NO</th>
+            <th>EMP NAME</th>
+            <th>EMP SALARY</th>
+            <th>EMP ADDRESS</th>
+            <th>ACTION</th>
+        </thead>
+        {% for emp in employees %}
+        <tr>
+            <td>{{emp.eno}}</td>
+            <td>{{emp.ename}}</td>
+            <td>{{emp.esalary}}</td>
+            <td>{{emp.eaddress}}</td>
+            <td><a href="/update/{{emp.id}}">Update</a>  <a href="/delete/{{emp.id}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+    <a href="/create" class="btn btn-primary btn-lg">Insert New Employee Record</a>
+</div>
+</body>
+</html>
